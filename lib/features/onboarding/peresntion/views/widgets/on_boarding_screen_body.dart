@@ -97,8 +97,9 @@ class OnBoardingScreenBody extends StatelessWidget {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.ease);
                 },
-                child: Text("Skip",
-                    style: AppStyles.notoSansStyleRegular12(context)),
+                child:context.read<UpdatePageCubit>().currentPage ==
+                              onBoard.length - 1 ? Text(''): Text("Skip",
+                    style: AppStyles.notoSansStyleRegular12(context)) ,
               ),
             ),
           ],
