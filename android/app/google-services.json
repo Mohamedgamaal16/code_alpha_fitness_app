@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "427523182162",
+    "project_id": "workout-app-74a14",
+    "storage_bucket": "workout-app-74a14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427523182162:android:3f89e07b9754f0f95e598b",
+        "android_client_info": {
+          "package_name": "com.example.fitness_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWCtnzkNTzce-Nd6rNTWJgh7zQgB3cJQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:427523182162:android:48df37025126fd865e598b",
+        "android_client_info": {
+          "package_name": "com.mycompany.codealphaworkout"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWCtnzkNTzce-Nd6rNTWJgh7zQgB3cJQc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
