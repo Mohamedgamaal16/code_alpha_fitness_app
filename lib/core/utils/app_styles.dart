@@ -4,32 +4,51 @@ import 'package:flutter/material.dart';
 abstract class AppStyles {
   static TextStyle notoSansStyleRegular12(BuildContext context) {
     return TextStyle(
-      color: AppColors.primaryColor,
+      color: Colors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 12),
       fontWeight: FontWeight.w400,
     );
   }
-   static TextStyle notoSansStyleBold60(BuildContext context) {
+
+  static TextStyle notoSansStyleBold12(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle notoSansStyleBold60(BuildContext context) {
     return TextStyle(
       color: AppColors.primaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 60),
       fontWeight: FontWeight.w700,
     );
   }
-     static TextStyle notoSansStyleMedium16(BuildContext context) {
+static TextStyle notoSansStyleBold26(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 26),
+      fontWeight: FontWeight.w700,
+    );
+  }
+  static TextStyle notoSansStyleMedium16(BuildContext context) {
     return TextStyle(
       color: AppColors.primaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontWeight: FontWeight.w500,
     );
   }
-   static TextStyle notoSansStyleBold25(BuildContext context) {
+
+  static TextStyle notoSansStyleBold25(BuildContext context) {
     return TextStyle(
       color: Colors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 25),
       fontWeight: FontWeight.w600,
     );
-  }  static TextStyle notoSansStyleregular14(BuildContext context) {
+  }
+
+  static TextStyle notoSansStyleregular14(BuildContext context) {
     return TextStyle(
       color: AppColors.textGrey,
       fontSize: getResponsiveFontSize(context, fontSize: 14),
@@ -37,6 +56,13 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle notoSansStyleBold14(BuildContext context) {
+    return TextStyle(
+      color: AppColors.textGrey,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w700,
+    );
+  }
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

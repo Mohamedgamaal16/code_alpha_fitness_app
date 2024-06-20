@@ -21,7 +21,7 @@ final void Function()? onTap;
           onTap: onTap,
           child: Text(
             pageName,
-            style: AppStyles.notoSansStyleRegular12(context),
+            style: AppStyles.notoSansStyleBold12(context),
           ),
         )
       ],

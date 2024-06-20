@@ -65,8 +65,9 @@ class OnBoardingScreenBody extends StatelessWidget {
                               await SharedPreferences.getInstance();
                           await prefs.setBool('OnBoarding', true);
 
+                          // ignore: use_build_context_synchronously
                           GoRouter.of(context)
-                              .pushReplacement(AppRouter.kHomeView);
+                              .pushReplacement(AppRouter.kSignInView);
                         } else {
                           context
                               .read<UpdatePageCubit>()
@@ -87,21 +88,7 @@ class OnBoardingScreenBody extends StatelessWidget {
                 const SizedBox(height: 20),
               ],
             ),
-            Positioned(
-              top: 10,
-              left: 10,
-              child: TextButton(
-                onPressed: () {
-                  context.read<UpdatePageCubit>().pageControler.animateToPage(
-                      onBoard.length - 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease);
-                },
-                child:context.read<UpdatePageCubit>().currentPage ==
-                              onBoard.length - 1 ? Text(''): Text("Skip",
-                    style: AppStyles.notoSansStyleRegular12(context)) ,
-              ),
-            ),
+            SkipWord(onBoard: onBoard),
           ],
         );
       },
@@ -117,6 +104,36 @@ class OnBoardingScreenBody extends StatelessWidget {
       decoration: BoxDecoration(
         color: isCurrentPage ? AppColors.primaryColor : AppColors.grey,
         borderRadius: BorderRadius.circular(5),
+      ),
+    );
+  }
+}
+
+class SkipWord extends StatelessWidget {
+  const SkipWord({
+    super.key,
+    required this.onBoard,
+  });
+
+  final List<OnBoardContent> onBoard;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 10,
+      left: 10,
+      child: TextButton(
+        onPressed: () {
+          context.read<UpdatePageCubit>().pageControler.animateToPage(
+              onBoard.length - 1,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.ease);
+        },
+        child: context.read<UpdatePageCubit>().currentPage ==
+                onBoard.length - 1
+            ? const Text('')
+            : Text("Skip",
+                style: AppStyles.notoSansStyleRegular12(context)),
       ),
     );
   }
