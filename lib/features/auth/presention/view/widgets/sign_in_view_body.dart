@@ -14,17 +14,10 @@ class SignInViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthSuccess) {
-          GoRouter.of(context).push(AppRouter.kHomeView);
-        } else if (state is AuthFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.error),
-            ),
-          );
+          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         }
       },
       builder: (context, state) {
@@ -47,7 +40,7 @@ class SignInViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 CustomInputField(
-                  controller:context.read<AuthCubit>().signINPassword,
+                  controller: context.read<AuthCubit>().signINPassword,
                   labelText: "Password",
                   hintText: "********",
                   obscureText: true,
@@ -65,6 +58,19 @@ class SignInViewBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
+                state is AuthFailure
+                    ? Column(
+                        children: [
+                          Text(
+                            state.error,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          )
+                        ],
+                      )
+                    : Container(),
                 state is AuthLoading
                     ? const CustomLoadingIndicator()
                     : SizedBox(

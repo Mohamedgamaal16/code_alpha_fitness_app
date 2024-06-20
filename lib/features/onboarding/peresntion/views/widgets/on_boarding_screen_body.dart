@@ -6,6 +6,7 @@ import 'package:fitness_app/features/onboarding/peresntion/views/widgets/onboard
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -79,7 +80,16 @@ class OnBoardingScreenBody extends StatelessWidget {
                       },
                       child: context.read<UpdatePageCubit>().currentPage ==
                               onBoard.length - 1
-                          ? const Text("Done")
+                          ? GestureDetector(
+                              onTap: () async {
+                                final SharedPreferences sharedPreferences =
+                                    GetIt.instance<SharedPreferences>();
+                                await sharedPreferences.setBool(
+                                    'onBoardingDone', true);
+                                GoRouter.of(context)
+                                    .pushReplacement(AppRouter.kSignInView);
+                              },
+                              child: const Text("Done"))
                           : const Icon(FontAwesomeIcons.arrowRight),
                     ),
                     const SizedBox(width: 15),
@@ -129,11 +139,11 @@ class SkipWord extends StatelessWidget {
               duration: const Duration(milliseconds: 300),
               curve: Curves.ease);
         },
-        child: context.read<UpdatePageCubit>().currentPage ==
-                onBoard.length - 1
+        child: context.read<UpdatePageCubit>().currentPage == onBoard.length - 1
             ? const Text('')
             : Text("Skip",
-                style: AppStyles.notoSansStyleRegular12(context)),
+                style: AppStyles.notoSansStyleRegular12(context)
+                    .copyWith(color: AppColors.primaryColor)),
       ),
     );
   }

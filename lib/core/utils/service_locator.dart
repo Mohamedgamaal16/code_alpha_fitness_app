@@ -1,13 +1,9 @@
-
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final getIt = GetIt.instance;
+final GetIt sl = GetIt.instance;
 
-Future registerInstances() async {
-  getIt.registerSingletonAsync<SharedPreferences>(
-    () => SharedPreferences.getInstance(),
-  );
- 
-
+Future<void> setupServiceLocator() async {
+  final sharedPreferences = await SharedPreferences.getInstance();
+  sl.registerSingleton<SharedPreferences>(sharedPreferences);
 }

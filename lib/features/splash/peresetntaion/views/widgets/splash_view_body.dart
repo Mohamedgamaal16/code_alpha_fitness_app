@@ -3,6 +3,7 @@ import 'package:fitness_app/core/utils/app_router.dart';
 import 'package:fitness_app/core/utils/app_styles.dart';
 import 'package:fitness_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -22,20 +23,28 @@ class _SplashViewBodyState extends State<SplashViewBody> {
       navigateToNextPage(context);
     });
   }
+void navigateToNextPage(BuildContext context) async {
 
-  void navigateToNextPage(BuildContext context) async {
-    // final prefs = await SharedPreferences.getInstance();
+  final SharedPreferences prefs = GetIt.instance<SharedPreferences>();
+        // await prefs.setBool('onBoardingDone', false);
 
-    // final hasToken = prefs.getBool("isLogin") ?? false; // Set default to false
+  // Check if user is logged in
+  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+  
+  // Check if onboarding is done
+  bool onBoardingDone = prefs.getBool('onBoardingDone') ?? false;
 
-    // if (hasToken) {
-    //   GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
-    // } else {
-    //   GoRouter.of(context).pushReplacement(AppRouter.kLogInView);
-    // }
-          GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingScreen);
-
+  // Decide navigation based on login status and onboarding completion
+  if (isLoggedIn) {
+    GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+  } else {
+    if (onBoardingDone) {
+      GoRouter.of(context).pushReplacement(AppRouter.kSignInView);
+    } else {
+      GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingScreen);
+    }
   }
+}
 
   @override
   Widget build(BuildContext context) {

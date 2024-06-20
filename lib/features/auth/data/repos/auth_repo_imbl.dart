@@ -1,26 +1,36 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/features/auth/data/repos/auth_repo.dart';
+import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepoImpl implements AuthRepository {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final SharedPreferences sharedPreferences = GetIt.instance<SharedPreferences>();
 
   @override
-  Future<Either<String,String>> signUp(
-      {required String email, required String password, required String confirmPassword}) async {
-    // Validate email format
+  Future<Either<String, String>> signUp({
+    required String email,
+    required String password,
+    required String confirmPassword,
+  }) async {
     if (!_isValidEmail(email)) {
-      return left("Invalid email format") ;
+      return left("Invalid email format");
     }
-    
-    // Check if passwords match
+
     if (password != confirmPassword) {
       return left("Passwords do not match");
     }
-    
+
     try {
       final UserCredential response = await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
+
+      // Mark user as logged in
+      await sharedPreferences.setBool('isLoggedIn', true);
+
       return right("Sign-up successful: ${response.user?.email}");
     } on FirebaseAuthException catch (e) {
       return left(_handleFirebaseAuthException(e));
@@ -30,11 +40,11 @@ class AuthRepoImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<String,String>> resetPassword({required String email}) async {
+  Future<Either<String, String>> resetPassword({required String email}) async {
     if (!_isValidEmail(email)) {
       return left("Invalid email format");
     }
-    
+
     try {
       await auth.sendPasswordResetEmail(email: email);
       return right("Check your mail for reset password");
@@ -46,15 +56,23 @@ class AuthRepoImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<String,String>> signIn(
-      {required String email, required String password}) async {
+  Future<Either<String, String>> signIn({
+    required String email,
+    required String password,
+  }) async {
     if (!_isValidEmail(email)) {
       return left("Invalid email format");
     }
-    
+
     try {
       final UserCredential response = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
+        email: email,
+        password: password,
+      );
+
+      // Mark user as logged in
+      await sharedPreferences.setBool('isLoggedIn', true);
+
       return right("Sign-in successful: ${response.user?.email}");
     } on FirebaseAuthException catch (e) {
       return left(_handleFirebaseAuthException(e));
@@ -63,13 +81,12 @@ class AuthRepoImpl implements AuthRepository {
     }
   }
 
-  // Utility method to validate email format
   bool _isValidEmail(String email) {
-    final emailRegex = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+    final emailRegex = RegExp(
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
     return emailRegex.hasMatch(email);
   }
 
-  // Utility method to handle FirebaseAuthException
   String _handleFirebaseAuthException(FirebaseAuthException e) {
     switch (e.code) {
       case 'invalid-email':

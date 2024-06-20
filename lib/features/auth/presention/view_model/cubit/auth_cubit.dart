@@ -24,8 +24,8 @@ class AuthCubit extends Cubit<AuthState> {
         password: signUpPassword.text,
         confirmPassword: signUpConfirmPassword.text,
       );
-      result.fold((error) => AuthFailure(error: error),
-          (success) => AuthSuccess(message: success));
+      result.fold((error) => emit(AuthFailure(error: error)),
+          (success) => emit(AuthSuccess(message: success)));
     } catch (e) {
       emit(AuthFailure(error: e.toString()));
     }
@@ -37,8 +37,8 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       final result = await authRepoImpl.signIn(
           email: signInEmail.text, password: signINPassword.text);
-      result.fold((error) => AuthFailure(error: error),
-          (success) => AuthSuccess(message: success));
+      result.fold((error) => emit(AuthFailure(error: error)),
+          (success) => emit(AuthSuccess(message: success)));
     } catch (e) {
       emit(AuthFailure(error: e.toString()));
     }
@@ -49,8 +49,8 @@ class AuthCubit extends Cubit<AuthState> {
 
     try {
       final result = await authRepoImpl.resetPassword(email: resetEmail.text);
-      result.fold((error) => AuthFailure(error: error),
-          (success) => AuthSuccess(message: success));
+        result.fold((error) => emit(AuthFailure(error: error)),
+          (success) => emit(AuthSuccess(message: success)));
     } catch (e) {
       emit(AuthFailure(error: e.toString()));
     }
