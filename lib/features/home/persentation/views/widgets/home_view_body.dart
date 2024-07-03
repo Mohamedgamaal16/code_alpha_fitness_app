@@ -1,6 +1,8 @@
 import 'package:fitness_app/core/utils/app_styles.dart';
+import 'package:fitness_app/core/utils/constants.dart';
+import 'package:fitness_app/features/home/persentation/views/widgets/first_section.dart';
 import 'package:fitness_app/features/home/persentation/views/widgets/home_header.dart';
-import 'package:fitness_app/features/home/persentation/views/widgets/time_spent_container.dart';
+import 'package:fitness_app/features/home/persentation/views/widgets/horizonatl_container_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -16,13 +18,11 @@ class HomeViewBody extends StatelessWidget {
           slivers: [
             const SliverToBoxAdapter(child: HomeHeader()),
             const SliverToBoxAdapter(child: SizedBox(height: 50)),
-            const SliverToBoxAdapter(
-              child: TimeSpentContainer(),
-            ),
+            const SliverToBoxAdapter(child: FirstSection()),
             const SliverToBoxAdapter(child: SizedBox(height: 20)),
             SliverToBoxAdapter(
               child: Text(
-                "Discover new workouts",
+                TextConstants.discovernewworkouts,
                 style: AppStyles.notoSansStyleBold20(context),
               ),
             )

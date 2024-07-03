@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/app_styles.dart';
+import 'package:fitness_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeHeader extends StatelessWidget {
@@ -16,16 +17,17 @@ class HomeHeader extends StatelessWidget {
               style: AppStyles.notoSansStyleBold16(context),
             ),
             Text(
-              'Track your goals!',
+              TextConstants.trackyourgoals,
               style: AppStyles.notoSansStyleregular14(context)
                   .copyWith(color: Colors.black),
             ),
           ],
-        ),Spacer(),
+        ),
+        Spacer(),
         const CircleAvatar(
           backgroundColor: Colors.amber,
           radius: 25,
-          child: Image(image: AssetImage("assets/images/avatar.png")),
+          child: Image(image: AssetImage(ImagesPathes.avatar)),
         ),
       ],
     );
