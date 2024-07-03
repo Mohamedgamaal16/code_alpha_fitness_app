@@ -82,7 +82,7 @@ class SignUpViewBody extends StatelessWidget {
                       ),
                 const SizedBox(height: 50),
                 CustomSignFooter(
-                  pageName: "Sign In",
+                  pageName: " Sign In",
                   onTap: () {
                     GoRouter.of(context).pushReplacement(AppRouter.kSignInView);
                   },

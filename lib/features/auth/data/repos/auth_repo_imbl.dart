@@ -103,6 +103,8 @@ class AuthRepoImpl implements AuthRepository {
         return "Email/password accounts are not enabled.";
       case 'weak-password':
         return "The password is too weak.";
+        case 'requires-recent-login':
+      return 'Log in again before retrying this request';
       default:
         return "An error occurred: ${e.message}";
     }

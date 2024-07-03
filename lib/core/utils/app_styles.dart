@@ -46,11 +46,17 @@ static TextStyle notoSansStyleBold26(BuildContext context) {
       fontSize: getResponsiveFontSize(context, fontSize: 25),
       fontWeight: FontWeight.w600,
     );
+  }static TextStyle notoSansStyleBold20(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontWeight: FontWeight.w600,
+    );
   }
 
   static TextStyle notoSansStyleregular14(BuildContext context) {
     return TextStyle(
-      color: AppColors.textGrey,
+      color: Colors.white,
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w400,
     );
@@ -58,8 +64,15 @@ static TextStyle notoSansStyleBold26(BuildContext context) {
 
   static TextStyle notoSansStyleBold14(BuildContext context) {
     return TextStyle(
-      color: AppColors.textGrey,
+      color: AppColors.secondryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w700,
+    );
+  }
+  static TextStyle notoSansStyleBold16(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontWeight: FontWeight.w700,
     );
   }

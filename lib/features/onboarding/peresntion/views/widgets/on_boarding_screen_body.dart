@@ -17,15 +17,15 @@ class OnBoardingScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<OnBoardContent> onBoard = [
       const OnBoardContent(
-          image: "assets/images/onboarding1.jpg",
+          image: "assets/images/1.png",
           title: TextConstants.onboarding1Title,
           description: TextConstants.onboarding1Description),
       const OnBoardContent(
-          image: "assets/images/onboarding2.jpg",
+          image: "assets/images/2.png",
           title: TextConstants.onboarding2Title,
           description: TextConstants.onboarding2Description),
       const OnBoardContent(
-          image: "assets/images/onboarding3.jpg",
+          image: "assets/images/3.png",
           title: TextConstants.onboarding3Title,
           description: TextConstants.onboarding3Description),
     ];
@@ -46,56 +46,70 @@ class OnBoardingScreenBody extends StatelessWidget {
                     itemBuilder: (context, index) => onBoard[index],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(onBoard.length, (index) {
-                        return buildDot(index, context);
-                      }),
+                if (context.read<UpdatePageCubit>().currentPage !=
+                    onBoard.length - 1)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(onBoard.length, (index) {
+                      return buildDot(index, context);
+                    }),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, bottom: 20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      backgroundColor: AppColors.primaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
-                    const Spacer(),
-                    ElevatedButton(
-                      style: const ButtonStyle(
-                          elevation: MaterialStatePropertyAll(0)),
-                      onPressed: () async {
-                        if (context.read<UpdatePageCubit>().currentPage ==
-                            onBoard.length - 1) {
-                          final SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          await prefs.setBool('OnBoarding', true);
+                    onPressed: () async {
+                      if (context.read<UpdatePageCubit>().currentPage ==
+                          onBoard.length - 1) {
+                        final SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        await prefs.setBool('OnBoarding', true);
 
-                          // ignore: use_build_context_synchronously
-                          GoRouter.of(context)
-                              .pushReplacement(AppRouter.kSignInView);
-                        } else {
-                          context
-                              .read<UpdatePageCubit>()
-                              .pageControler
-                              .nextPage(
-                                  duration: const Duration(milliseconds: 300),
-                                  curve: Curves.ease);
-                        }
-                      },
-                      child: context.read<UpdatePageCubit>().currentPage ==
-                              onBoard.length - 1
-                          ? GestureDetector(
-                              onTap: () async {
-                                final SharedPreferences sharedPreferences =
-                                    GetIt.instance<SharedPreferences>();
-                                await sharedPreferences.setBool(
-                                    'onBoardingDone', true);
-                                GoRouter.of(context)
-                                    .pushReplacement(AppRouter.kSignInView);
-                              },
-                              child: const Text("Done"))
-                          : const Icon(FontAwesomeIcons.arrowRight),
-                    ),
-                    const SizedBox(width: 15),
-                  ],
+                        // ignore: use_build_context_synchronously
+                        GoRouter.of(context)
+                            .pushReplacement(AppRouter.kSignInView);
+                      } else {
+                        context.read<UpdatePageCubit>().pageControler.nextPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease);
+                      }
+                    },
+                    child: context.read<UpdatePageCubit>().currentPage ==
+                            onBoard.length - 1
+                        ? GestureDetector(
+                            onTap: () async {
+                              final SharedPreferences sharedPreferences =
+                                  GetIt.instance<SharedPreferences>();
+                              await sharedPreferences.setBool(
+                                  'onBoardingDone', true);
+                              GoRouter.of(context)
+                                  .pushReplacement(AppRouter.kSignInView);
+                            },
+                            child: Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                height:
+                                    MediaQuery.of(context).size.width * 0.1,
+                                alignment: Alignment.center,
+                                child: Text("Get Started",
+                                    style: AppStyles.notoSansStyleregular14(
+                                        context))),
+                          )
+                        : SizedBox(width: MediaQuery.of(context).size.width * 0.2,
+                                height:
+                                    MediaQuery.of(context).size.width * 0.1,
+                          child: const Icon(
+                              FontAwesomeIcons.arrowRight,
+                              color: Colors.white,
+                            ),
+                        ),
+                  ),
                 ),
-                const SizedBox(height: 20),
               ],
             ),
             SkipWord(onBoard: onBoard),
@@ -112,7 +126,9 @@ class OnBoardingScreenBody extends StatelessWidget {
       width: isCurrentPage ? 20 : 16,
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
-        color: isCurrentPage ? AppColors.primaryColor : AppColors.grey,
+        color: isCurrentPage
+            ? AppColors.primaryColor
+            : const Color.fromARGB(255, 192, 192, 192),
         borderRadius: BorderRadius.circular(5),
       ),
     );

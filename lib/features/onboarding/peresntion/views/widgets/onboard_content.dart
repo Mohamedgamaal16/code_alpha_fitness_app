@@ -11,10 +11,12 @@ class OnBoardContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      
       children: [
-        const Spacer(),
-        Image.asset(image),
+        Container(
+          height: MediaQuery.of(context).size.height * 0.65,
+          width: MediaQuery.of(context).size.width *1,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(image),fit: BoxFit.fill))),
         const Spacer(),
         Text(
           title,
@@ -24,11 +26,14 @@ class OnBoardContent extends StatelessWidget {
           height: 16,
         ),
         Text(
-          
           description,
-          style: AppStyles.notoSansStyleregular14(context),textAlign: TextAlign.center,
+          style: AppStyles.notoSansStyleregular14(context)
+              .copyWith(color: Colors.black),
+          textAlign: TextAlign.center,
         ),
-        const Spacer()
+        SizedBox(
+          height: 20,
+        )
       ],
     );
   }

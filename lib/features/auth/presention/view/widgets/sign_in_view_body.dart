@@ -53,7 +53,7 @@ class SignInViewBody extends StatelessWidget {
                   },
                   child: Text(
                     "Forgot Password?",
-                    style: AppStyles.notoSansStyleBold14(context),
+                    style: AppStyles.notoSansStyleBold14(context).copyWith(color: Colors.black),
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -86,7 +86,7 @@ class SignInViewBody extends StatelessWidget {
                 CustomSignFooter(
                   pageName: "Sign Up",
                   onTap: () {
-                    GoRouter.of(context).pushReplacement(AppRouter.kSignUp);
+                    GoRouter.of(context).pushReplacement(AppRouter.kSignUpView);
                   },
                   sentence: "Don't have an account?",
                 ),

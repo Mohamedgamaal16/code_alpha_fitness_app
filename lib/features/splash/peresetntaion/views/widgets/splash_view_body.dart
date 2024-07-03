@@ -1,7 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:fitness_app/core/utils/app_router.dart';
 import 'package:fitness_app/core/utils/app_styles.dart';
-import 'package:fitness_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
@@ -27,6 +26,7 @@ void navigateToNextPage(BuildContext context) async {
 
   final SharedPreferences prefs = GetIt.instance<SharedPreferences>();
         // await prefs.setBool('onBoardingDone', false);
+        // await prefs.setBool('isLoggedIn', false);
 
   // Check if user is logged in
   bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
@@ -41,7 +41,7 @@ void navigateToNextPage(BuildContext context) async {
     if (onBoardingDone) {
       GoRouter.of(context).pushReplacement(AppRouter.kSignInView);
     } else {
-      GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingScreen);
+      GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView);
     }
   }
 }
