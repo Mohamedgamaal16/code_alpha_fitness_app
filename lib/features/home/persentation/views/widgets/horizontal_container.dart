@@ -38,7 +38,7 @@ class HoriZontalContainer extends StatelessWidget {
                       image: DecorationImage(
                           image: AssetImage(image), fit: BoxFit.fill))),
               const SizedBox(width: 10),
-              Flexible(child: Text(title, style: AppStyles.notoSansStyleRegular18(context))),
+              Flexible(child: Text(title, style: AppStyles.notoSansStyleRegular16(context))),
             ],
           ),
           Row(

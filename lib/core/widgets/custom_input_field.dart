@@ -1,8 +1,6 @@
-
 import 'package:fitness_app/core/utils/app_styles.dart';
 import 'package:fitness_app/core/utils/constants.dart';
 import 'package:flutter/material.dart';
-
 
 class CustomInputField extends StatefulWidget {
   const CustomInputField({
@@ -12,14 +10,18 @@ class CustomInputField extends StatefulWidget {
     this.suffixIcon = false,
     this.isDense,
     this.obscureText = false,
-    this.controller,  this.minLines=1,  this.maxLines=1, 
+    this.controller,
+    this.minLines = 1,
+    this.maxLines = 1,
+    this.showLabel = true,
   });
 
   final String labelText, hintText;
-  final bool suffixIcon, obscureText;
+  final bool suffixIcon, obscureText, showLabel;
   final bool? isDense;
   final TextEditingController? controller;
-final int minLines,maxLines;
+  final int minLines, maxLines;
+
   @override
   State<CustomInputField> createState() => _CustomInputFieldState();
 }
@@ -31,12 +33,13 @@ class _CustomInputFieldState extends State<CustomInputField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      )),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
       child: TextFormField(
-        minLines: widget.minLines ,
-        maxLines:widget.maxLines ,
+        minLines: widget.minLines,
+        maxLines: widget.maxLines,
         autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: (textValue) {
           if (textValue == null || textValue.isEmpty) {
@@ -47,37 +50,38 @@ class _CustomInputFieldState extends State<CustomInputField> {
         },
         obscureText: (widget.obscureText && _obscureText),
         decoration: InputDecoration(
-            border: outline(),
-            enabledBorder: outline(),
-            focusedBorder: outline(),
-            disabledBorder: outline(),
-            fillColor: const Color(0xFFF9FCFE),
-            filled: true,
-            isDense: (widget.isDense != null) ? widget.isDense : false,
-            suffixIcon: widget.suffixIcon
-                ? IconButton(
-                    icon: Icon(
-                      _obscureText
-                          ? Icons.remove_red_eye
-                          : Icons.visibility_off_outlined,
-                      color: Colors.black54,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                  )
-                : null,
-            suffixIconConstraints: (widget.isDense != null)
-                ? const BoxConstraints(maxHeight: 33)
-                : null,
-            hintText: widget.hintText,
-            label: Text(
-              widget.labelText,
-              style: AppStyles.notoSansStyleRegular12(context),
-            ),
-            hintStyle: AppStyles.notoSansStyleRegular12(context)),
+          border: outline(),
+          enabledBorder: outline(),
+          focusedBorder: outline(),
+          disabledBorder: outline(),
+          fillColor: const Color(0xFFF9FCFE),
+          filled: true,
+          isDense: (widget.isDense != null) ? widget.isDense : false,
+          suffixIcon: widget.suffixIcon
+              ? IconButton(
+                  icon: Icon(
+                    _obscureText ? Icons.remove_red_eye : Icons.visibility_off_outlined,
+                    color: Colors.black54,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _obscureText = !_obscureText;
+                    });
+                  },
+                )
+              : null,
+          suffixIconConstraints: (widget.isDense != null)
+              ? const BoxConstraints(maxHeight: 33)
+              : null,
+          hintText: widget.hintText,
+          label: widget.showLabel
+              ? Text(
+                  widget.labelText,
+                  style: AppStyles.notoSansStyleRegular12(context),
+                )
+              : null,
+          hintStyle: AppStyles.notoSansStyleRegular12(context),
+        ),
         controller: widget.controller,
       ),
     );
@@ -85,12 +89,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
 
   OutlineInputBorder outline() {
     return OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.primaryColor),
-        borderRadius: BorderRadius.circular(12));
-  }
-
-  UnderlineInputBorder removeBorder() {
-    return const UnderlineInputBorder(
-        borderSide: BorderSide(style: BorderStyle.solid));
+      borderSide: const BorderSide(color: AppColors.primaryColor),
+      borderRadius: BorderRadius.circular(12),
+    );
   }
 }

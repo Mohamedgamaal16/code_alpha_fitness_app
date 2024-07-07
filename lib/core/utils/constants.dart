@@ -38,4 +38,8 @@ class TextConstants {
   static const String completedWorkouts = "Completed Workouts";
   static const String discovernewworkouts = "Discover new workouts";
   static const String trackyourgoals = "Track your goals!";
+    static const String yourWorkouts = "Your workouts";
+      static const String workoutsPlans = "Workouts plans";
+
+
 }

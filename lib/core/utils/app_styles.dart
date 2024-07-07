@@ -16,6 +16,12 @@ abstract class AppStyles {
       fontSize: getResponsiveFontSize(context, fontSize: 12),
       fontWeight: FontWeight.w700,
     );
+  }  static TextStyle notoSansStyleBold16(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w700,
+    );
   }
 
   static TextStyle notoSansStyleBold60(BuildContext context) {
@@ -36,6 +42,12 @@ static TextStyle notoSansStyleBold26(BuildContext context) {
       color: Colors.black,
       fontSize: getResponsiveFontSize(context, fontSize: 46),
       fontWeight: FontWeight.w700,
+    );
+  }static TextStyle notoSansStyleBold34(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 26),
+      fontWeight: FontWeight.w600,
     );
   }
   static TextStyle notoSansStyleMedium16(BuildContext context) {
@@ -59,11 +71,11 @@ static TextStyle notoSansStyleBold26(BuildContext context) {
       fontWeight: FontWeight.w600,
     );
   }
-static TextStyle notoSansStyleRegular18(BuildContext context) {
+static TextStyle notoSansStyleRegular16(BuildContext context) {
     return TextStyle(
       color: Colors.black,
-      fontSize: getResponsiveFontSize(context, fontSize: 18),
-      fontWeight: FontWeight.w500,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w400,
     );
   }
   static TextStyle notoSansStyleregular14(BuildContext context) {
@@ -81,13 +93,7 @@ static TextStyle notoSansStyleRegular18(BuildContext context) {
       fontWeight: FontWeight.w700,
     );
   }
-  static TextStyle notoSansStyleBold16(BuildContext context) {
-    return TextStyle(
-      color: Colors.black,
-      fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontWeight: FontWeight.w700,
-    );
-  }
+
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

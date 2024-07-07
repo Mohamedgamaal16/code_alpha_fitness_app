@@ -40,7 +40,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           labelName,
-          style: AppStyles.notoSansStyleRegular12(context).copyWith(
+          style: AppStyles.notoSansStyleBold16(context).copyWith(
             color: textColor,
           ),
         ),

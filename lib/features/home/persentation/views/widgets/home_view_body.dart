@@ -2,7 +2,8 @@ import 'package:fitness_app/core/utils/app_styles.dart';
 import 'package:fitness_app/core/utils/constants.dart';
 import 'package:fitness_app/features/home/persentation/views/widgets/first_section.dart';
 import 'package:fitness_app/features/home/persentation/views/widgets/home_header.dart';
-import 'package:fitness_app/features/home/persentation/views/widgets/horizonatl_container_list.dart';
+import 'package:fitness_app/features/home/persentation/views/widgets/plans_card_list.dart';
+import 'package:fitness_app/features/home/persentation/views/widgets/your_workouts_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -25,7 +26,19 @@ class HomeViewBody extends StatelessWidget {
                 TextConstants.discovernewworkouts,
                 style: AppStyles.notoSansStyleBold20(context),
               ),
-            )
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
+            const SliverToBoxAdapter(child: PlansCardList()),
+            const SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(
+              child: Text(
+                TextConstants.yourWorkouts,
+                style: AppStyles.notoSansStyleBold20(context),
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
+            const SliverToBoxAdapter(child: YourWorkoutsList()),
           ],
         ),
       ),

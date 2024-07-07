@@ -1,4 +1,5 @@
 import 'package:fitness_app/features/home/persentation/views/widgets/home_view_body.dart';
+import 'package:fitness_app/features/workouts/peresentaion/view/workout_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,9 +10,9 @@ class HomeCubit extends Cubit<HomeState> {
   int currentIndex = 0;
   final List<Widget> appPages = [
     const HomeViewBody(),
-    const HomeViewBody(),
-    const HomeViewBody(),
-    const HomeViewBody(),
+    const WorkoutView(),
+    const WorkoutView(),
+    const WorkoutView(),
   ];
   void changePages(int value) {
     currentIndex = value;

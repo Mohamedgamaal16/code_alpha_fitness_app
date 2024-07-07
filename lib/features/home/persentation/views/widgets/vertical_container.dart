@@ -26,7 +26,7 @@ class VericalContainer extends StatelessWidget {
           Center(
             child: Text(
               title,
-              style: AppStyles.notoSansStyleRegular18(context),
+              style: AppStyles.notoSansStyleRegular16(context),
               overflow: TextOverflow.fade,
               softWrap: false,
             ),

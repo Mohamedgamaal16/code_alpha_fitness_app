@@ -3,9 +3,9 @@ import 'package:fitness_app/features/auth/presention/view/sign_in_view.dart';
 import 'package:fitness_app/features/auth/presention/view/sign_up_view.dart';
 import 'package:fitness_app/features/home/persentation/view_model/home_cubit/home_cubit.dart';
 import 'package:fitness_app/features/home/persentation/views/home_view.dart';
-import 'package:fitness_app/features/home/persentation/views/widgets/home_view_body.dart';
 import 'package:fitness_app/features/onboarding/peresntion/views/onboarding_view.dart';
 import 'package:fitness_app/features/splash/peresetntaion/views/splash_view.dart';
+import 'package:fitness_app/features/workouts/peresentaion/view/widgets/add_data_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,6 +17,7 @@ abstract class AppRouter {
   static const kSignInView = '/signin';
   static const kResetPasswordView = '/ResetPasswordView';
   static const kAboutView = '/AboutPage';
+  static const kAddDataView = '/AddDataView';
 
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
@@ -30,6 +31,9 @@ abstract class AppRouter {
     GoRoute(
       path: kSignInView,
       builder: (context, state) => const SignInView(),
+    ), GoRoute(
+      path: kAddDataView,
+      builder: (context, state) => const AddDataView(),
     ),
     GoRoute(
       path: kSignUpView,
