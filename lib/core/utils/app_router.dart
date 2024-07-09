@@ -6,6 +6,7 @@ import 'package:fitness_app/features/home/persentation/views/home_view.dart';
 import 'package:fitness_app/features/onboarding/peresntion/views/onboarding_view.dart';
 import 'package:fitness_app/features/splash/peresetntaion/views/splash_view.dart';
 import 'package:fitness_app/features/workouts/peresentaion/view/widgets/add_data_view.dart';
+import 'package:fitness_app/features/workouts/peresentaion/view/widgets/add_excersise_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,6 +19,7 @@ abstract class AppRouter {
   static const kResetPasswordView = '/ResetPasswordView';
   static const kAboutView = '/AboutPage';
   static const kAddDataView = '/AddDataView';
+  static const kAddExercisessView = '/AddExercisessView';
 
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
@@ -27,6 +29,9 @@ abstract class AppRouter {
     GoRoute(
       path: kOnBoardingView,
       builder: (context, state) => const OnBoardingScreen(),
+    ),GoRoute(
+      path: kAddExercisessView,
+      builder: (context, state) => const AddExercisessView(),
     ),
     GoRoute(
       path: kSignInView,

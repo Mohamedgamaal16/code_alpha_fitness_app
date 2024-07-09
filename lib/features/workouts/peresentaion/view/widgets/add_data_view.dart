@@ -1,6 +1,9 @@
+import 'package:fitness_app/core/utils/app_router.dart';
+import 'package:fitness_app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/widgets/custom_button.dart';
 import 'package:fitness_app/core/widgets/custom_input_field.dart';
+import 'package:go_router/go_router.dart';
 
 class AddDataView extends StatelessWidget {
   const AddDataView({super.key});
@@ -9,7 +12,7 @@ class AddDataView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Your Workout'),
+        title: const Text('Back'),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -19,9 +22,18 @@ class AddDataView extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Center(
+                  child: Text(
+                    'Add Your Workout',
+                    style: AppStyles.notoSansStyleBold26(context),
+                  ),
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
+                Text(
                   'Workout Name',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: AppStyles.notoSansStyleBold16(context),
                 ),
                 const SizedBox(height: 10),
                 const CustomInputField(
@@ -30,24 +42,24 @@ class AddDataView extends StatelessWidget {
                   hintText: 'Enter workout name',
                 ),
                 const SizedBox(height: 16),
-                const Text(
+                Text(
                   'Exercises Number',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: AppStyles.notoSansStyleBold16(context),
                 ),
                 const SizedBox(height: 10),
-                const CustomInputField(                  showLabel: false,
-
+                const CustomInputField(
+                  showLabel: false,
                   labelText: 'Exercises Number',
                   hintText: 'Enter number of exercises from 1 : 10',
                 ),
                 const SizedBox(height: 16),
-                const Text(
+                Text(
                   'Minutes',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: AppStyles.notoSansStyleBold16(context),
                 ),
                 const SizedBox(height: 10),
-                const CustomInputField(                  showLabel: false,
-
+                const CustomInputField(
+                  showLabel: false,
                   labelText: 'Minutes',
                   hintText: 'Enter workout duration in minutes',
                 ),
@@ -57,7 +69,9 @@ class AddDataView extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * 1,
                     child: CustomButton(
                       labelName: 'Add',
-                      onPressed: () {},
+                      onPressed: () {
+                        GoRouter.of(context).pushReplacement(AppRouter.kAddExercisessView);();
+                      },
                     ),
                   ),
                 ),
