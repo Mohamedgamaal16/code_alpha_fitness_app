@@ -35,7 +35,7 @@ Future<dynamic> addExercises(BuildContext context) {
               cursorColor: AppColors.primaryColor,
               decoration: InputDecoration(
                 floatingLabelStyle: AppStyles.notoSansStyleregular14(context)
-                    .copyWith(color: AppColors.primaryColor),
+                    .copyWith(color: AppColors.primaryColor ),
                 labelText: 'Sets',
                 hintText: "Number of sets",
                 hintStyle: AppStyles.notoSansStyleRegular12(context),

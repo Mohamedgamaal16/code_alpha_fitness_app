@@ -1,3 +1,4 @@
+import 'package:fitness_app/features/calories_calc/peresntaion/view/calc_ciew.dart';
 import 'package:fitness_app/features/home/persentation/views/widgets/home_view_body.dart';
 import 'package:fitness_app/features/workouts/peresentaion/view/workout_view.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ class HomeCubit extends Cubit<HomeState> {
   final List<Widget> appPages = [
     const HomeViewBody(),
     const WorkoutView(),
-    const WorkoutView(),
+    const CalacView(),
     const WorkoutView(),
   ];
   void changePages(int value) {
