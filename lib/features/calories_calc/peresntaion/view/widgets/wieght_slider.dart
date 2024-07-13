@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class WeightSlider extends StatelessWidget {
-  const WeightSlider({Key? key}) : super(key: key);
+  const WeightSlider({super.key});
 
   @override
   Widget build(BuildContext context) {

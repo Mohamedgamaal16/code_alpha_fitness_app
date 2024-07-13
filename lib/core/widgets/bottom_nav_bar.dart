@@ -20,27 +20,27 @@ class CustomBottomNavBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+        padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
         child: GNav(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
           activeColor: AppColors.primaryColor,
           textStyle: AppStyles.notoSansStyleRegular12(context)
               .copyWith(color: AppColors.primaryColor),
-          gap: 8,
+          gap: 4,
           tabBackgroundColor: Colors.transparent,
           backgroundColor: Colors.white,
           onTabChange: changePages,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           tabs: const [
             GButton(
-              iconSize: 26,
-              icon: MyFlutterApp.home,
+              iconSize: 28,
+              icon: MyFlutterApp.home1,
               text: 'Home',
               iconColor: Colors.black,
             ),
             GButton(
-              iconSize: 26,
-              icon: MyFlutterApp.dumbbell,
+              iconSize: 30,
+              icon: MyFlutterApp.dumbbell2_1,
               text: 'Workouts',
               iconColor: Colors.black,
             ),
@@ -51,8 +51,8 @@ class CustomBottomNavBar extends StatelessWidget {
               iconColor: Colors.black,
             ),
             GButton(
-              iconSize: 26,
-              icon: MyFlutterApp.cog_outline,
+              iconSize: 24,
+              icon: MyFlutterApp.setting2,
               text: 'Profile',
               iconColor: Colors.black,
             ),

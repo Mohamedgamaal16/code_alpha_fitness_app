@@ -1,7 +1,10 @@
 import 'package:fitness_app/core/utils/app_styles.dart';
+import 'package:fitness_app/core/widgets/custom_button.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/active_measure.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/age_picker.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/clac_header.dart';
+import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/gender_container.dart';
+import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/height_picker.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/wieght_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +12,8 @@ class CalacViewBody extends StatelessWidget {
   const CalacViewBody({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {        final double screenheight = MediaQuery.of(context).size.height;
+
     return CustomScrollView(
       slivers: [
         const SliverToBoxAdapter(
@@ -33,6 +37,7 @@ class CalacViewBody extends StatelessWidget {
             child: SizedBox(
           height: 20,
         )),
+        const SliverToBoxAdapter(child: GenderSelector()),
         SliverToBoxAdapter(
             child: Text(
           "Pick weight",
@@ -61,7 +66,20 @@ class CalacViewBody extends StatelessWidget {
             child: SizedBox(
           height: 20,
         )),
-        SliverToBoxAdapter(child: NumberSliderWidget()),
+        const SliverToBoxAdapter(child: NumberSliderWidget()),
+         SliverToBoxAdapter(
+            child: SizedBox(
+          height: screenheight*0.15,
+          child: const HeightPicker(),
+        )),
+        SliverToBoxAdapter(
+            child: SizedBox(
+          height: 50,
+          child: CustomButton(
+            labelName: 'Calculate',
+            onPressed: () {},
+          ),
+        )),
       ],
     );
   }

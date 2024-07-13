@@ -13,12 +13,11 @@ class AgePicker extends StatelessWidget {
     return BlocBuilder<AgePickerCubit, AgePickerState>(
       builder: (context, state) {
         final agePickerCubit = context.read<AgePickerCubit>();
-
         return Container(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(4.0),
           decoration: BoxDecoration(
-            color: Colors.white, 
-            borderRadius: BorderRadius.circular(20.0), 
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
                 color: Colors.grey.withOpacity(0.3),

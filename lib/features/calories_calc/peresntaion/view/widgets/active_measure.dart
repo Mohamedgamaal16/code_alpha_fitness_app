@@ -29,13 +29,16 @@ class NumberSliderWidget extends StatelessWidget {
                       .copyWith(color: Colors.grey),
                 ),
               ],
-            ),
+            ), Text(
+                  'How many days a week do you exercise?',
+                  style: AppStyles.notoSansStyleRegular12(context).copyWith(color: Colors.grey),
+                ),
             Slider(
               activeColor: AppColors.primaryColor,
               value: activePickerCubit.currentActiveValue.toDouble(),
               min: 0.0,
-              max: 5.0,
-              divisions: 5,
+              max: 7.0,
+              divisions: 7,
               label: activePickerCubit.currentActiveValue.round().toString(),
               onChanged: (value) {
                 activePickerCubit.updateActiveVlaue(value.toInt());

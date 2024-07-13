@@ -3,15 +3,19 @@ import 'package:fitness_app/core/utils/app_router.dart';
 import 'package:fitness_app/core/utils/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]);  await setupServiceLocator();
+  ]);
+  await setupServiceLocator();
 
   await Firebase.initializeApp();
+  await Hive.initFlutter();
+  await Hive.openBox<int>('localData');
   runApp(const FitnessApp());
 }
 
