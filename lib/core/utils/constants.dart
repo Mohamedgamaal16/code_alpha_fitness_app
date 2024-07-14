@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const textColor = Color(0xFF1F2022);
   static const primaryColor = Color(0xFFDF423B);
+  static Color opacityPrimaryColor = const Color(0xFFDF423B).withOpacity(0.5);
+
   static const homeBackgroundColor = Colors.white;
   static const secondryColor = Color(0xFFF0F0F0);
 }
@@ -38,8 +40,13 @@ class TextConstants {
   static const String completedWorkouts = "Completed Workouts";
   static const String discovernewworkouts = "Discover new workouts";
   static const String trackyourgoals = "Track your goals!";
-    static const String yourWorkouts = "Your workouts";
-      static const String workoutsPlans = "Workouts plans";
-
-
+  static const String yourWorkouts = "Your workouts";
+  static const String workoutsPlans = "Workouts plans";
+  static const String selectHeight = "Select Height :";
+  static const String calculate = "Calculate";
+  static const String age = "Age";
+  static const String pickweight = "Pick weight";
+  static const String calorieCalculator = "Calorie Calculator";
+  // static const String calculate = "Calculate";
+  // static const String calculate = "Calculate";
 }

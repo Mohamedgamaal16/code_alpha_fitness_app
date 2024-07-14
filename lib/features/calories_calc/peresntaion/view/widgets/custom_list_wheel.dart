@@ -8,7 +8,7 @@ class CustomListWheel extends StatelessWidget {
     super.key,
     required this.heightPickerCubit,
     required this.counter,
-    this.isMeter = true, // Optional parameter with default of true
+    this.isMeter = true, 
   });
 
   final AgePickerCubit heightPickerCubit;

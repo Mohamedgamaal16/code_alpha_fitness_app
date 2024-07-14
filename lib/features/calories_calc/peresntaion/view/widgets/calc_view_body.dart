@@ -1,4 +1,5 @@
 import 'package:fitness_app/core/utils/app_styles.dart';
+import 'package:fitness_app/core/utils/constants.dart';
 import 'package:fitness_app/core/widgets/custom_button.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/active_measure.dart';
 import 'package:fitness_app/features/calories_calc/peresntaion/view/widgets/age_picker.dart';
@@ -12,7 +13,8 @@ class CalacViewBody extends StatelessWidget {
   const CalacViewBody({super.key});
 
   @override
-  Widget build(BuildContext context) {        final double screenheight = MediaQuery.of(context).size.height;
+  Widget build(BuildContext context) {
+    final double screenheight = MediaQuery.of(context).size.height;
 
     return CustomScrollView(
       slivers: [
@@ -23,7 +25,7 @@ class CalacViewBody extends StatelessWidget {
         SliverToBoxAdapter(
             child: Center(
                 child: Text(
-          "Calorie Calculator",
+         TextConstants.calorieCalculator,
           style: AppStyles.notoSansStyleBold20(context),
         ))),
         const SliverToBoxAdapter(
@@ -40,7 +42,7 @@ class CalacViewBody extends StatelessWidget {
         const SliverToBoxAdapter(child: GenderSelector()),
         SliverToBoxAdapter(
             child: Text(
-          "Pick weight",
+          TextConstants.pickweight,
           style: AppStyles.notoSansStyleBold20(context),
         )),
         const SliverToBoxAdapter(
@@ -52,7 +54,7 @@ class CalacViewBody extends StatelessWidget {
         ),
         SliverToBoxAdapter(
             child: Text(
-          "Age",
+          TextConstants.age,
           style: AppStyles.notoSansStyleBold20(context),
         )),
         const SliverToBoxAdapter(
@@ -67,16 +69,16 @@ class CalacViewBody extends StatelessWidget {
           height: 20,
         )),
         const SliverToBoxAdapter(child: NumberSliderWidget()),
-         SliverToBoxAdapter(
+        SliverToBoxAdapter(
             child: SizedBox(
-          height: screenheight*0.15,
+          height: screenheight * 0.15,
           child: const HeightPicker(),
         )),
         SliverToBoxAdapter(
             child: SizedBox(
           height: 50,
           child: CustomButton(
-            labelName: 'Calculate',
+            labelName: TextConstants.calculate,
             onPressed: () {},
           ),
         )),

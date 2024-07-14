@@ -10,14 +10,13 @@ class HeightPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<AgePickerCubit, AgePickerState>(
       builder: (context, state) {
         final heightPickerCubit = context.read<AgePickerCubit>();
 
         return Row(
           children: [
-            Text("Select Height :",
+            Text(TextConstants.selectHeight,
                 style: AppStyles.notoSansStyleBold16(context)),
             Text(
                 "${heightPickerCubit.currentHeightMeterValue},${heightPickerCubit.currentHeightCmValue}M ",
